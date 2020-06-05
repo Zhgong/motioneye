@@ -3,7 +3,8 @@ from setuptools import setup
 setup(
     name='send-bot',
     version='0.2',
-    py_modules=['cli_cmd', 'send_message'],
+    #py_modules=['cli_cmd', 'send_message'],
+    packages=['send_bot'],
     install_requires=[
         'certifi',
         'chardet',
@@ -15,7 +16,7 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        send-bot=cli_cmd:cli
+        send-bot=send_bot.cli_cmd:cli
     ''',
 )
 
