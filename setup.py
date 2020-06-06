@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='send-bot',
-    version='0.2',
+    version='0.3',
     #py_modules=['cli_cmd', 'send_message'],
     packages=['send_bot'],
     install_requires=[
