@@ -17,5 +17,5 @@ $ send-bot "How are you doing?"
 ```
 
 ### Push message with MotionNotification
-with script motion-trig-command.sh
+with script [motion-trig-command.sh](./motion-trig-command.sh)
 ![](./Pictures/motionNotification01.png)
