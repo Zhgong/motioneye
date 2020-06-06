@@ -3,7 +3,7 @@
 LOGFILE=$0.log
 echo "----- Motion -------" >> ${LOGFILE}
 
-source /home/pi/motioneye/.env-bash # use this file to transfer enviroment variables otherwise it will not work if this script was called by system
+source $(dirname $0)/.env-bash # use this file to transfer enviroment variables otherwise it will not work if this script was called by system
 
 echo PWD:$(pwd)
 
@@ -14,4 +14,4 @@ echo ENV: >> ${LOGFILE}
 env >> ${LOGFILE}
 export PATH=$PATH:"/home/pi/.local/bin"
 echo $PATH >> ${LOGFILE}
-send-bot "[Mailbox] [有信件]" >> $0.log 2>&1
+send-bot "[Mailbox] [有信件]" >> ${LOGFILE} 2>&1
