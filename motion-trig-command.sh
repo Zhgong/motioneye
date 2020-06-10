@@ -2,6 +2,7 @@
 
 LOGFILE=$0.log
 echo "----- Motion -------" >> ${LOGFILE}
+date >> ${LOGFILE}
 
 source $(dirname $0)/.env-bash # use this file to transfer enviroment variables otherwise it will not work if this script was called by system
 
