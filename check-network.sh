@@ -29,7 +29,11 @@ while true; do
 
 	if [ ${network_status} -eq 1 ] && [ ${network_status_old} -eq 0 ]; then
 		echo ["$(date)"] [Network OK]
-		if [ ${count} -eq 0 ] || [ ${send_mode} -eq 1 ]; then
+		if [ ${count} -eq 0 ]; then
+			name=$(hostname)
+			ip=$(hostname -I | cut -d' ' -f1)
+			send_message "[${name} Network ok. http://${ip}:8765] "
+		elif [ ${send_mode} -eq 1 ]; then
 			send_message "Network ok"
 		fi
 		count=$((count + 1))
