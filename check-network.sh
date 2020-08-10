@@ -31,8 +31,9 @@ while true; do
 		echo ["$(date)"] [Network OK]
 		if [ ${count} -eq 0 ]; then
 			name=$(hostname)
+			current_date=$(date)
 			ip=$(hostname -I | cut -d' ' -f1)
-			send_message "[${name} Network ok. http://${ip}:8765] "
+			send_message "[${current_date}][${name} Network ok. http://${ip}:8765] "
 		elif [ ${send_mode} -eq 1 ]; then
 			send_message "Network ok"
 		fi
