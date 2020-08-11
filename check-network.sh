@@ -4,7 +4,10 @@ LOGFILE=/var/log/$FILE.log
 exec 1>>"${LOGFILE}"
 exec 2>&1
 
-echo [$(date)] start Script to check netork connection
+echo -------------------------------------------------------------------------------
+echo +             [$(date)] start Script to check netork connection               +
+echo -------------------------------------------------------------------------------
+echo $(timedatectl)
 
 network_status=0
 network_status_old=0
@@ -34,11 +37,16 @@ while true; do
 			current_date=$(date)
 			ip=$(hostname -I | cut -d' ' -f1)
 			send_message "[${current_date}][${name} Network ok. http://${ip}:8765] "
+			echo $(timedatectl)
 		elif [ ${send_mode} -eq 1 ]; then
 			send_message "Network ok"
 		fi
 		count=$((count + 1))
 		echo Network reconnect count: ${count}
+
+	elif [ ${network_status} -eq 0 ] && [ ${network_status_old} -eq 1 ]; then
+		echo ["$(date)"] [Network is unconnected]
+		echo $(timedatectl)
 	fi
 
 	# echo network_status: ${network_status}
