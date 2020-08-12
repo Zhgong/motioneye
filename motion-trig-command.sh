@@ -20,6 +20,8 @@ do
 	curl -X POST -H "Content-Type: application/json" -u "${MESSAGE_TOKEN}" -d "${MESSAGE}" -k https://${SERVER_IP}:${PORT}/api/v1/send
 	if [ $? -eq 0 ]     
 	then         
+		echo ""
+		echo $(timedatectl show)
 		echo "$(date) Send successfully"
 		break     
 	fi     
