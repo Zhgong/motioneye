@@ -12,6 +12,7 @@ echo $(timedatectl)
 network_status=0
 network_status_old=0
 count=0
+retry=0
 send_mode=0 # 0: send once (after bootup), 1: in loop
 
 function send_message() {
@@ -37,9 +38,25 @@ while true; do
 			current_date=$(date)
 			ip=$(hostname -I | cut -d' ' -f1)
 			send_message "[${current_date}][${name} Network ok. http://${ip}:8765] "
+			result=$?
+			if [ ${result} -eq 0 ]; then
+				retry=0
+			else
+				retry=1
+
+			fi
 			echo $(timedatectl)
 		elif [ ${send_mode} -eq 1 ]; then
 			send_message "Network ok"
+		elif [ ${retry} -eq 1 ]; then
+			send_message "[${current_date}][${name} Network ok. http://${ip}:8765] "
+			result=$?
+			if [ ${result} -eq 0 ]; then
+				retry=0
+			else
+				retry=1
+
+			fi
 		fi
 		count=$((count + 1))
 		echo Network reconnect count: ${count}
