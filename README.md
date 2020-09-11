@@ -12,6 +12,13 @@ SERVER_IP=<your-server-ip>
 PORT=<your-port>
 ```
 
+add lines to ~/.bashrc
+```sh
+export MESSAGE_TOKEN=<your-token>
+export SERVER_IP=<your-server-ip>
+export PORT=<your-port>
+```
+
 ```sh
 $ pip install .
 $ send-bot "How are you doing?"
